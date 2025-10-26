@@ -1,0 +1,11 @@
+{
+  "name": "backend3",
+  "type": "python",
+  "path": "/srv/apps/backend3",
+  "venv": "/srv/apps/backend3/venv",
+  "wsgi": "ntbs_backend_deploy.wsgi:application",
+  "port": 8002,
+  "domain": "ntbs-backend.edu.np",
+  "build": "python3 -m venv venv && venv/bin/pip install --upgrade pip && venv/bin/pip install -r requirements.txt && venv/bin/python manage.py collectstatic --noinput && venv/bin/python manage.py migrate",
+  "start": "/srv/apps/backend3/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8002 ntbs_backend_deploy.wsgi:application"
+}

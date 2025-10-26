@@ -33,7 +33,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CORS_ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS').split(',')
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3006",
+    "http://localhost:3000",
+    "http://127.0.0.1:8000",
+    "https://ntbs.tcioe.edu.np",
+    "http://ntbs.tcioe.edu.np",
+]
 
 # Application definition
 
@@ -48,8 +54,6 @@ INSTALLED_APPS = [
     #Packages
     'rest_framework',
     'corsheaders',
-    'cloudinary_storage',
-    'cloudinary',
     #Local
     'committee',
     'gallery',
@@ -92,12 +96,9 @@ WSGI_APPLICATION = 'ntbs_backend_deploy.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DATABASE'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('POSTGRES_HOST'),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -139,18 +140,13 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR/'static' #specify the directory where the collectstatic command will collect all the static files 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" #dependency whitenoise
-MEDIA_URL = '/media/'  # or any prefix you choose
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # or any other Cloudinary storage class
+
+# Media files (User uploaded content)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'  # Local storage for uploaded files
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-#Cloudinary Storage Settings
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
-    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
-}
 

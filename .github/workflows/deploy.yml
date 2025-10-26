@@ -7,6 +7,9 @@ jobs:
   deploy:
     name: Build & Deploy
     runs-on: self-hosted
+    env:
+      SECRET_KEY: ${{ secrets.SC }}
+      DEBUG: ${{ secrets.DEBUG }}
 
     steps:
       - name: Checkout Repository

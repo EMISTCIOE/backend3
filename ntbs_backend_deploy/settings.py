@@ -43,6 +43,14 @@ CORS_ALLOWED_ORIGINS = [
     "http://ntbs-backend.tcioe.edu.np",
 ]
 
+# Trusted origins for Django's CSRF protection. Include the exact scheme + host
+# used by requests coming from the browser or reverse proxy. Adjust or extend
+# this list for other domains you serve from.
+CSRF_TRUSTED_ORIGINS = [
+    "https://ntbs-backend.tcioe.edu.np",
+    "https://ntbs.tcioe.edu.np",
+]
+
 # Application definition
 
 INSTALLED_APPS = [

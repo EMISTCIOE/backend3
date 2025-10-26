@@ -39,6 +39,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
     "https://ntbs.tcioe.edu.np",
     "http://ntbs.tcioe.edu.np",
+    "https://ntbs-backend.tcioe.edu.np",
+    "http://ntbs-backend.tcioe.edu.np",
 ]
 
 # Application definition

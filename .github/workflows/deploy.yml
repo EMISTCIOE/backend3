@@ -8,7 +8,7 @@ jobs:
     name: Build & Deploy
     runs-on: self-hosted
     env:
-      SECRET_KEY: ${{ secrets.SC }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
       DEBUG: ${{ secrets.DEBUG }}
 
     steps:
